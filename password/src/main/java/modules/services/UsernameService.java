@@ -22,7 +22,7 @@ public class UsernameService {
     //create username
     public UsernameModel createUsername(UsernameModel usernameModel) throws Exception {
         UsernameEntity usernameEntity = mapToEntity(usernameModel);
-        usernameRepository.save(usernameEntity);
+        usernameEntity = usernameRepository.save(usernameEntity);
         return mapToModel(usernameEntity);
     }
 
@@ -47,14 +47,14 @@ public class UsernameService {
     public UsernameModel mapToModel(UsernameEntity usernameEntity) throws Exception {
         UsernameModel usernameModel = new UsernameModel();
         usernameModel.setUsername(usernameEntity.getUsername());
-        usernameModel.setPasswordModel((List<PasswordModel>) passwordService.mapToModel((PasswordEntity) usernameEntity.getPassword()));
+        usernameModel.setPasswordModel(passwordService.mapToModel());
         return usernameModel;
     }
 
     public UsernameEntity mapToEntity(UsernameModel usernameModel) throws Exception {
         UsernameEntity usernameEntity = new UsernameEntity();
         usernameEntity.setUsername(usernameModel.getUsername());
-        usernameEntity.setPassword((List<PasswordEntity>) passwordService.mapToEntity((PasswordModel) usernameModel.getPasswordModel()));
+        usernameEntity.setPassword(passwordService.mapToEntity());
         return usernameEntity;
     }
 }

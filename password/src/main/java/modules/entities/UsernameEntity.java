@@ -6,7 +6,6 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import java.util.List;
 
 @Entity
 @Getter
@@ -20,7 +19,7 @@ public class UsernameEntity {
     private Long id;
     @Column
     private String username;
-    @OneToMany
+    @OneToOne
     @JoinColumn(name = "password_id")
-    private List<PasswordEntity> password;
+    private PasswordEntity password;
 }

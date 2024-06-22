@@ -14,12 +14,12 @@ public class PasswordController {
         this.passwordService = passwordService;
     }
     @PostMapping("/create")
-    public ResponseEntity<PasswordModel> createPassword(PasswordModel passwordModel) throws Exception {
-        return ResponseEntity.ok(passwordService.createPassword(passwordModel));
+    public ResponseEntity<PasswordModel> createPassword() throws Exception {
+        return ResponseEntity.ok(passwordService.createPassword());
     }
     @PutMapping("/update/{passwordId}")
-    public ResponseEntity<PasswordModel> updatePassword(@PathVariable Long passwordId, @RequestBody PasswordModel passwordModel) throws Exception {
-        return ResponseEntity.ok(passwordService.updatePassword(passwordId, passwordModel));
+    public ResponseEntity<PasswordModel> updatePassword(@PathVariable Long passwordId) throws Exception {
+        return ResponseEntity.ok(passwordService.updatePassword(passwordId));
     }
     @DeleteMapping("/delete/{passwordId}")
     public ResponseEntity<Void> deletePassword(@PathVariable Long passwordId) {

@@ -12,19 +12,18 @@ import java.util.Base64;
 public class EncryptionService {
     private static final String ALGORITHM = "AES";
 
+
     // Generate a new AES key
     public  SecretKey generateKey(int n) throws Exception {
         KeyGenerator keyGenerator = KeyGenerator.getInstance(ALGORITHM);
         keyGenerator.init(n);
-        SecretKey key = keyGenerator.generateKey();
-        return key;
+        return keyGenerator.generateKey();
     }
 
     // Convert a string key to SecretKey
     public  SecretKey getKeyFromString(String keyStr) {
         byte[] decodedKey = Base64.getDecoder().decode(keyStr);
-        SecretKeySpec secretKey = new SecretKeySpec(decodedKey, 0, decodedKey.length, ALGORITHM);
-        return secretKey;
+        return new SecretKeySpec(decodedKey, 0, decodedKey.length, ALGORITHM);
     }
 
     // Encrypt a string using the provided key
@@ -44,7 +43,7 @@ public class EncryptionService {
     }
 
     // Convert SecretKey to String
-    public static String keyToString(SecretKey secretKey) {
+    public  String keyToString(SecretKey secretKey) {
         return Base64.getEncoder().encodeToString(secretKey.getEncoded());
     }
 }

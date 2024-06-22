@@ -1,7 +1,9 @@
 package modules.services;
 
-import modules.models.UserModel;
 import modules.entities.UserEntity;
+import modules.entities.UsernameEntity;
+import modules.models.UserModel;
+import modules.models.UsernameModel;
 import modules.repositories.UserRepository;
 import org.springframework.stereotype.Service;
 
@@ -19,7 +21,7 @@ public class UserService {
     }
     //create user
     public UserModel createUser(UserModel userModel){
-        UserEntity userEntity = null;
+        UserEntity userEntity;
         try {
             userEntity = mapToEntity(userModel);
         } catch (Exception e) {
@@ -59,7 +61,7 @@ public class UserService {
         UserModel userModel = new UserModel();
         userModel.setEmail(userEntity.getEmail());
         userModel.setMasterPassword(userEntity.getMasterPassword());
-        userModel.setUsernameModel(usernameService.mapToModel(userEntity.getUsername()));
+        userModel.setUsernameModel((List<UsernameModel>) usernameService.mapToModel((UsernameEntity) userEntity.getUsername()));
         return userModel;
     }
 
@@ -67,7 +69,7 @@ public class UserService {
         UserEntity userEntity = new UserEntity();
         userEntity.setEmail(userModel.getEmail());
         userEntity.setMasterPassword(userModel.getMasterPassword());
-        userEntity.setUsername(usernameService.mapToEntity(userModel.getUsernameModel()));
+        userEntity.setUsername((List<UsernameEntity>) usernameService.mapToEntity((UsernameModel) userModel.getUsernameModel()));
         return userEntity;
     }
 }

@@ -5,6 +5,8 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.util.List;
+
 
 @Getter
 @Setter
@@ -13,5 +15,5 @@ import lombok.Setter;
 public class UserModel  {
     private String email;
     private String masterPassword;
-    private UsernameModel usernameModel;
+    private List<UsernameModel> usernameModel;
 }

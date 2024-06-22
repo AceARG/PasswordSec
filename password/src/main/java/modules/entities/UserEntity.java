@@ -6,10 +6,13 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.util.List;
+
 @Entity
 @Getter
 @Setter
 @AllArgsConstructor
+@Table(name = "user")
 @NoArgsConstructor
 public class UserEntity {
     @Id
@@ -19,6 +22,9 @@ public class UserEntity {
     private String email;
     @Column
     private String masterPassword;
-    @Column
-    private UsernameEntity username;
+    @OneToMany
+    @JoinColumn(name = "username_id")
+    private List<UsernameEntity> username;
+
+
 }

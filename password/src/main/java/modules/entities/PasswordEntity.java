@@ -12,6 +12,7 @@ import lombok.Setter;
 @Entity
 @AllArgsConstructor
 @NoArgsConstructor
+@Table(name = "password")
 public class PasswordEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

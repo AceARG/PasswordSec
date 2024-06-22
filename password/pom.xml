@@ -9,9 +9,9 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 
-	<groupId>modules.password</groupId>
+	<groupId>modules</groupId>
 	<artifactId>password</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+	<version>1.0.2.RELEASE</version>
 	<name>password</name>
 	<description>Demo project for Spring Boot</description>
 	<url/>
@@ -83,13 +83,6 @@
 		</plugins>
 
 	</build>
-<!--			<profiles>-->
-<!--				<profile>-->
-<!--					<defaultGoal>-->
-<!--						<sourceDirectory>src</sourceDirectory>-->
-<!--					</defaultGoal>-->
-<!--				</profile>-->
-<!--			</profiles>-->
 
 			<profiles>
 				<profile>

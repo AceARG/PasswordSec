@@ -1,5 +1,7 @@
 package modules.services;
 
+import modules.entities.PasswordEntity;
+import modules.models.PasswordModel;
 import modules.models.UsernameModel;
 import modules.entities.UsernameEntity;
 import modules.repositories.UsernameRepository;
@@ -45,14 +47,14 @@ public class UsernameService {
     public UsernameModel mapToModel(UsernameEntity usernameEntity) throws Exception {
         UsernameModel usernameModel = new UsernameModel();
         usernameModel.setUsername(usernameEntity.getUsername());
-        usernameModel.setPasswordModel(passwordService.mapToModel(usernameEntity.getPassword()));
+        usernameModel.setPasswordModel((List<PasswordModel>) passwordService.mapToModel((PasswordEntity) usernameEntity.getPassword()));
         return usernameModel;
     }
 
     public UsernameEntity mapToEntity(UsernameModel usernameModel) throws Exception {
         UsernameEntity usernameEntity = new UsernameEntity();
         usernameEntity.setUsername(usernameModel.getUsername());
-        usernameEntity.setPassword(passwordService.mapToEntity(usernameModel.getPasswordModel()));
+        usernameEntity.setPassword((List<PasswordEntity>) passwordService.mapToEntity((PasswordModel) usernameModel.getPasswordModel()));
         return usernameEntity;
     }
 }
